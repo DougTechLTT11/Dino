@@ -15,13 +15,21 @@
         
         body {
             font-family: Arial, sans-serif;
-            background-color: #f7f7f7;
             overflow: hidden;
             position: fixed;
             width: 100%;
             height: 100%;
             user-select: none;
             -webkit-user-select: none;
+            transition: background-color 0.3s;
+        }
+        
+        body.light-mode {
+            background-color: #f7f7f7;
+        }
+        
+        body.dark-mode {
+            background-color: #121212;
         }
         
         #gameContainer {
@@ -29,15 +37,22 @@
             width: 100%;
             height: 100vh;
             max-height: -webkit-fill-available;
-            background-color: white;
             overflow: hidden;
+            transition: background-color 0.3s;
+        }
+        
+        #gameContainer.light-mode {
+            background-color: white;
+        }
+        
+        #gameContainer.dark-mode {
+            background-color: #1e1e1e;
         }
         
         #gameCanvas {
             display: block;
             width: 100%;
             height: 70%;
-            background-color: white;
         }
         
         #ground {
@@ -45,7 +60,15 @@
             bottom: 30%;
             width: 100%;
             height: 2px;
+            transition: background-color 0.3s;
+        }
+        
+        #ground.light-mode {
             background-color: #535353;
+        }
+        
+        #ground.dark-mode {
+            background-color: #e0e0e0;
         }
         
         #controls {
@@ -56,8 +79,16 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: #f0f0f0;
+            transition: background-color 0.3s;
             touch-action: manipulation;
+        }
+        
+        #controls.light-mode {
+            background-color: #f0f0f0;
+        }
+        
+        #controls.dark-mode {
+            background-color: #2d2d2d;
         }
         
         .control-btn {
@@ -65,35 +96,44 @@
             height: 120px;
             margin: 0 30px;
             border-radius: 50%;
-            background-color: #e0e0e0;
-            border: 4px solid #535353;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 24px;
             font-weight: bold;
-            color: #535353;
             cursor: pointer;
             user-select: none;
             -webkit-user-select: none;
             touch-action: manipulation;
+            transition: all 0.2s;
+        }
+        
+        .light-mode .control-btn {
+            border: 4px solid #535353;
+            color: #535353;
+            background-color: #e0e0e0;
+        }
+        
+        .dark-mode .control-btn {
+            border: 4px solid #e0e0e0;
+            color: #e0e0e0;
+            background-color: #3d3d3d;
         }
         
         .control-btn:active {
-            background-color: #d0d0d0;
             transform: scale(0.95);
         }
         
         #jumpBtn {
             background-color: #4CAF50;
             color: white;
-            border-color: #388E3C;
+            border-color: #388E3C !important;
         }
         
         #duckBtn {
             background-color: #FF9800;
             color: white;
-            border-color: #F57C00;
+            border-color: #F57C00 !important;
         }
         
         #scoreContainer {
@@ -102,7 +142,15 @@
             right: 20px;
             font-size: 24px;
             font-weight: bold;
+            transition: color 0.3s;
+        }
+        
+        .light-mode #scoreContainer {
             color: #535353;
+        }
+        
+        .dark-mode #scoreContainer {
+            color: #e0e0e0;
         }
         
         #gameOverScreen {
@@ -111,35 +159,60 @@
             left: 0;
             width: 100%;
             height: 70%;
-            background-color: rgba(255, 255, 255, 0.8);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 10;
             display: none;
+            transition: background-color 0.3s;
+        }
+        
+        .light-mode #gameOverScreen {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .dark-mode #gameOverScreen {
+            background-color: rgba(30, 30, 30, 0.8);
         }
         
         #gameOverText {
             font-size: 48px;
             font-weight: bold;
-            color: #535353;
             margin-bottom: 20px;
+            transition: color 0.3s;
+        }
+        
+        .light-mode #gameOverText {
+            color: #535353;
+        }
+        
+        .dark-mode #gameOverText {
+            color: #e0e0e0;
         }
         
         #restartBtn {
             padding: 15px 30px;
-            background-color: #2196F3;
-            color: white;
             border: none;
             border-radius: 10px;
             font-size: 24px;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .light-mode #restartBtn {
+            background-color: #2196F3;
+            color: white;
+        }
+        
+        .dark-mode #restartBtn {
+            background-color: #0d8aee;
+            color: white;
         }
         
         #restartBtn:active {
-            background-color: #1976D2;
+            transform: scale(0.95);
         }
         
         #startScreen {
@@ -148,34 +221,84 @@
             left: 0;
             width: 100%;
             height: 70%;
-            background-color: white;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             z-index: 10;
+            transition: background-color 0.3s;
+        }
+        
+        .light-mode #startScreen {
+            background-color: white;
+        }
+        
+        .dark-mode #startScreen {
+            background-color: #1e1e1e;
         }
         
         #startTitle {
             font-size: 36px;
             font-weight: bold;
-            color: #535353;
             margin-bottom: 30px;
+            transition: color 0.3s;
+        }
+        
+        .light-mode #startTitle {
+            color: #535353;
+        }
+        
+        .dark-mode #startTitle {
+            color: #e0e0e0;
         }
         
         #startBtn {
             padding: 15px 30px;
-            background-color: #4CAF50;
-            color: white;
             border: none;
             border-radius: 10px;
             font-size: 24px;
             font-weight: bold;
             cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .light-mode #startBtn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        
+        .dark-mode #startBtn {
+            background-color: #3d8b40;
+            color: white;
         }
         
         #startBtn:active {
-            background-color: #388E3C;
+            transform: scale(0.95);
+        }
+        
+        #themeToggle {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            z-index: 20;
+            transition: all 0.3s;
+        }
+        
+        .light-mode #themeToggle {
+            background-color: #535353;
+            color: white;
+        }
+        
+        .dark-mode #themeToggle {
+            background-color: #e0e0e0;
+            color: #121212;
         }
         
         @media (max-width: 500px) {
@@ -193,34 +316,70 @@
             #gameOverText {
                 font-size: 36px;
             }
+            
+            #themeToggle {
+                width: 40px;
+                height: 40px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
-<body>
-    <div id="gameContainer">
+<body class="light-mode">
+    <div id="gameContainer" class="light-mode">
         <canvas id="gameCanvas"></canvas>
-        <div id="ground"></div>
+        <div id="ground" class="light-mode"></div>
         
+        <div id="themeToggle">🌓</div>
         <div id="scoreContainer">Score: 0</div>
         
-        <div id="gameOverScreen">
+        <div id="gameOverScreen" class="light-mode">
             <div id="gameOverText">Game Over!</div>
             <button id="restartBtn">Play Again</button>
         </div>
         
-        <div id="startScreen">
+        <div id="startScreen" class="light-mode">
             <div id="startTitle">Dino Game</div>
             <button id="startBtn">Start Game</button>
         </div>
         
-        <div id="controls">
+        <div id="controls" class="light-mode">
             <div id="jumpBtn" class="control-btn">JUMP</div>
             <div id="duckBtn" class="control-btn">DUCK</div>
         </div>
     </div>
 
     <script>
-        // Game variables
+        // Load theme preference from localStorage
+        function loadTheme() {
+            const savedTheme = localStorage.getItem('dinoGameTheme') || 'light-mode';
+            document.body.className = savedTheme;
+            document.getElementById('gameContainer').className = savedTheme;
+            document.getElementById('ground').className = savedTheme;
+            document.getElementById('controls').className = savedTheme;
+            document.getElementById('gameOverScreen').className = savedTheme;
+            document.getElementById('startScreen').className = savedTheme;
+        }
+        
+        // Toggle between light and dark mode
+        function toggleTheme() {
+            const currentTheme = document.body.classList.contains('light-mode') ? 'light-mode' : 'dark-mode';
+            const newTheme = currentTheme === 'light-mode' ? 'dark-mode' : 'light-mode';
+            
+            document.body.className = newTheme;
+            document.getElementById('gameContainer').className = newTheme;
+            document.getElementById('ground').className = newTheme;
+            document.getElementById('controls').className = newTheme;
+            document.getElementById('gameOverScreen').className = newTheme;
+            document.getElementById('startScreen').className = newTheme;
+            
+            localStorage.setItem('dinoGameTheme', newTheme);
+        }
+        
+        // Initialize theme
+        loadTheme();
+        
+        // Set canvas size
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const scoreContainer = document.getElementById('scoreContainer');
@@ -230,8 +389,8 @@
         const startBtn = document.getElementById('startBtn');
         const jumpBtn = document.getElementById('jumpBtn');
         const duckBtn = document.getElementById('duckBtn');
+        const themeToggle = document.getElementById('themeToggle');
         
-        // Set canvas size
         function resizeCanvas() {
             const container = document.getElementById('gameContainer');
             const controlsHeight = document.getElementById('controls').offsetHeight;
@@ -258,6 +417,21 @@
         let lastCloudTime = 0;
         let animationId;
         let gameStartTime;
+        let frameCount = 0;
+        
+        // Load sprites
+        const dinoSprite = new Image();
+        const dinoDuckSprite = new Image();
+        const cactusSmallSprite = new Image();
+        const cactusLargeSprite = new Image();
+        const birdSprite = new Image();
+        
+        // Base64 encoded sprites (simplified versions of Chrome dino game assets)
+        dinoSprite.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCA4MCI+PHBhdGggZmlsbD0iIzUzNTM1MyIgZD0iTTEwIDQwaDEwdjQwSDEwem0yMCAwaDEwdjQwSDMwem0xMCAxMGgxMHYzMEg0MHoiLz48L3N2Zz4=';
+        dinoDuckSprite.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2MCA0MCI+PHBhdGggZmlsbD0iIzUzNTM1MyIgZD0iTTEwIDBoNDB2MTBIMTB6bTAgMTBoNDB2MTBIMTB6bTAgMTBoNDB2MTBIMTB6Ii8+PC9zdmc+';
+        cactusSmallSprite.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMCA2MCI+PHBhdGggZmlsbD0iIzUzNTM1MyIgZD0iTTEwIDBoMTB2NjBIMTB6Ii8+PC9zdmc+';
+        cactusLargeSprite.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCA1MCI+PHBhdGggZmlsbD0iIzUzNTM1MyIgZD0iTTEwIDBoMTB2NTBIMTB6bTIwIDBoMTB2NTBIMzB6Ii8+PC9zdmc+';
+        birdSprite.src = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MCAyMCI+PHBhdGggZmlsbD0iIzUzNTM1MyIgZD0iTTAgMTBoNDBsNDAgMTBINDB6Ii8+PC9zdmc+';
         
         // Dino properties
         const dino = {
@@ -266,17 +440,18 @@
             width: 60,
             height: 80,
             duckHeight: 40,
-            color: '#535353'
+            sprite: dinoSprite,
+            duckSprite: dinoDuckSprite
         };
         
         // Initialize dino position
         dino.y = canvas.height - dino.height - 2;
         
-        // Obstacle types
+        // Obstacle types with sprites
         const obstacleTypes = [
-            { width: 30, height: 60, color: '#535353' }, // Cactus small
-            { width: 50, height: 50, color: '#535353' }, // Cactus large
-            { width: 80, height: 20, color: '#535353' }  // Bird (when ducking)
+            { width: 30, height: 60, sprite: cactusSmallSprite }, // Cactus small
+            { width: 50, height: 50, sprite: cactusLargeSprite }, // Cactus large
+            { width: 80, height: 20, sprite: birdSprite }        // Bird
         ];
         
         // Game functions
@@ -292,6 +467,7 @@
             clouds = [];
             lastObstacleTime = 0;
             lastCloudTime = 0;
+            frameCount = 0;
             gameStartTime = Date.now();
             startScreen.style.display = 'none';
             gameOverScreen.style.display = 'none';
@@ -305,6 +481,7 @@
             gameOverScreen.style.display = 'flex';
             if (score > highScore) {
                 highScore = score;
+                // Could save high score to localStorage here if desired
             }
         }
         
@@ -406,6 +583,8 @@
             
             // Check for collisions
             checkCollisions();
+            
+            frameCount++;
         }
         
         function checkCollisions() {
@@ -438,14 +617,23 @@
         
         function drawGame() {
             // Clear canvas
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (document.body.classList.contains('light-mode')) {
+                ctx.fillStyle = 'white';
+            } else {
+                ctx.fillStyle = '#1e1e1e';
+            }
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
             
             // Draw ground line
-            ctx.fillStyle = '#535353';
+            if (document.body.classList.contains('light-mode')) {
+                ctx.fillStyle = '#535353';
+            } else {
+                ctx.fillStyle = '#e0e0e0';
+            }
             ctx.fillRect(0, canvas.height - 2, canvas.width, 2);
             
             // Draw clouds
-            ctx.fillStyle = '#C0C0C0';
+            ctx.fillStyle = document.body.classList.contains('light-mode') ? '#C0C0C0' : '#606060';
             for (const cloud of clouds) {
                 ctx.beginPath();
                 ctx.ellipse(cloud.x, cloud.y, cloud.width, cloud.height, 0, 0, Math.PI * 2);
@@ -453,25 +641,17 @@
             }
             
             // Draw obstacles
-            ctx.fillStyle = '#535353';
             for (const obstacle of obstacles) {
-                ctx.fillRect(obstacle.x, obstacle.y, obstacle.width, obstacle.height);
+                ctx.drawImage(obstacle.sprite, obstacle.x, obstacle.y, obstacle.width, obstacle.height);
             }
             
             // Draw dino
-            ctx.fillStyle = dino.color;
             if (isDucking && !isJumping) {
                 // Ducking position
-                ctx.fillRect(dino.x, canvas.height - dino.duckHeight - 2, dino.width, dino.duckHeight);
+                ctx.drawImage(dino.duckSprite, dino.x, canvas.height - dino.duckHeight - 2, dino.width, dino.duckHeight);
             } else {
                 // Standing or jumping position
-                ctx.fillRect(dino.x, dino.y, dino.width, dino.height);
-                
-                // Draw legs when running
-                if (!isJumping && Math.floor(Date.now() / 100) % 10 < 5) {
-                    ctx.fillRect(dino.x + 10, dino.y + dino.height, 10, 5);
-                    ctx.fillRect(dino.x + 40, dino.y + dino.height, 10, 5);
-                }
+                ctx.drawImage(dino.sprite, dino.x, dino.y, dino.width, dino.height);
             }
         }
         
@@ -490,6 +670,7 @@
         // Event listeners
         startBtn.addEventListener('click', startGame);
         restartBtn.addEventListener('click', startGame);
+        themeToggle.addEventListener('click', toggleTheme);
         
         jumpBtn.addEventListener('touchstart', (e) => {
             e.preventDefault();
